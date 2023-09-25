@@ -1,0 +1,85 @@
+{% extends 'main/_inside-base.html' %}
+{% load static %}
+
+{% block title %}
+FAQ
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'main/css/faq.css' %}">
+{% endblock %}
+
+{% block active %}
+<li class="list">
+    <b></b>
+    <b></b>
+    <a href="{% url 'history' %}">
+        <span class="icon"><i class="bi bi-clock-history"></i></span>
+    </a>
+</li>
+<li class="list">
+    <b></b>
+    <b></b>
+    <a href="{% url 'settings' %}">
+        <span class="icon"><i class="bi bi-gear"></i></span>
+    </a>
+</li>
+<li class="list active">
+    <b></b>
+    <b></b>
+    <a href="{% url 'faq' %}">
+        <span class="icon"><i class="bi bi-question-lg"></i></span>
+    </a>
+</li>
+{% endblock %}
+
+{% block mobile-active %}
+<li class="list">
+    <a href="{% url 'history' %}">
+        <div class="indicator"></div>
+        <span class="icon"><i class="bi bi-clock-history"></i></span>
+    </a>
+</li>
+<li class="list">
+    <a href="{% url 'settings' %}">
+        <div class="indicator"></div>
+        <span class="icon"><i class="bi bi-gear"></i></span>
+    </a>
+</li>
+<li class="non-list">
+    <a href="#">
+        <button class="icon" id="open-modal-mob"><i class="bi bi-upload"></i></button>
+        <p class="text">{{ request.user }}</p>
+    </a>
+</li>
+<li class="list active">
+    <a href="{% url 'faq' %}">
+        <div class="indicator"></div>
+        <span class="icon"><i class="bi bi-question-lg"></i></span>
+    </a>
+</li>
+<li class="list">
+    <a href="{% url 'logout' %}">
+        <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+    </a>
+</li>
+{% endblock %}
+
+{% block heading %}
+<h2>FAQ</h2>
+{% endblock %}
+
+{% block main-content %}
+<div class="qa">
+    <p class="question"><b>Q</b>: I have lost my email, how can I change it?</p>
+    <p><b>A</b>: It's very easy, first log in to your account, then go to Settings - Change Email, enter your email and now you're good to go</p>
+</div>
+<div class="qa">
+    <p class="question"><b>Q</b>: How can I update my password?</p>
+    <p><b>A</b>: Log in to your account, in the Settings section, go to Change Password, enter your new password and done!</p>
+</div>
+<div class="qa">
+    <p class="question"><b>Q</b>: How can I see the lyric of the uploaded song?</p>
+    <p class="last"><b>A</b>:  After uploading your file, click on Details - Lyric</p>
+</div>
+{% endblock %}

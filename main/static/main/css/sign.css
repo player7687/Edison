@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    /* min-height: 100vh; */
+    /* background: #150941; */
+    /* background-blend-mode: multiply; */
+    background: radial-gradient(#1a1a1a, #121212);
+    /* background: radial-gradient(#e66465, #9198e5); */
+    /* background-size: cover; */
+    height: 100vh;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    width: 1109px;
+    margin: 0 auto;
+}
+
+h2 {
+    /* position: relative; */
+    text-align: center;
+    padding-top: 30px;
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 36px;
+    color: #F70040;
+    /* margin-bottom: 50px; */
+}
+
+.link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.link .bi {
+    font-size: 14px;
+    color: #F70040;
+}
+
+.link a {
+    font-size: 14px;
+    color: #F70040;
+    text-decoration: none;
+}
+
+.wrapper-container {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 550px;
+}
+
+.wrapper-container .first {
+    margin-top: 50px;
+}
+
+.wrapper-container h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #ffffff;
+    margin-left: 50px;
+}
+
+.wrapper-container h3.redirect {
+    display: none;
+}
+
+.wrapper-container .redirect a {
+    color: #F70040;
+    text-decoration: none;
+}
+
+.wrapper-container .form {
+    position: relative;
+    align-items: center;
+    vertical-align: middle;
+    display: flex;
+    width: 500px;
+    height: 50px;
+    background: #ffffff;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.wrapper-container .form .icon {
+    margin-left: 15px;
+    font-size: 20px;
+    color: #F70040;
+}
+
+.wrapper-container .form .input-box input {
+    border:none;
+    display: block;
+    background: #ffffff;
+    margin-left: 10px;
+    width: 440px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.wrapper-container .form .input-box input:focus {
+    outline: none;
+}
+
+.wrapper-container .button {
+    text-align: center;
+}
+
+.wrapper-container .button .btn {
+    display: inline-block;
+	padding: 5px 20px;
+    background-color: transparent;
+	border: 2px solid #F70040;
+    transition: 0.3s ease;
+    letter-spacing: 0.1rem;
+	transition-property: background-color, color;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-size: 14px;
+
+}
+
+.wrapper-container .button .btn:hover {
+    color: #ffffff;
+	background-color: #F70040;
+}
+
+.wrapper-container label {
+    color: #ffffff;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.wrapper-container .sex {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    align-items: center;
+    vertical-align: middle;
+    margin-left: 50px;
+}
+
+.wrapper-container .sex input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.wrapper-container .sex .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: #eee;
+    border-radius: 50%;
+    border: 2px solid gray;
+}
+
+.wrapper-container .sex:hover input ~ .checkmark {
+    background-color: #ccc;
+    border-color: #F70040;
+}
+
+.wrapper-container .sex input:checked ~ .checkmark {
+    border-color: #F70040;
+}  
+
+.wrapper-container .sex .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.wrapper-container .sex input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.wrapper-container .sex .checkmark:after {
+    top: 2px;
+    left: 2px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #F70040;
+}
+
+@media (max-width: 1300px) {
+    .wrapper {
+        width: 100vw;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .wrapper-container {
+        width: 80vw;
+        /* padding-left: 30px;
+        padding-right: 30px; */
+    }
+    .wrapper-container .form {
+        width: 75vw;
+    }
+
+    .wrapper-container .form .input-box input {
+        width: 60vw;
+    }
+
+    .wrapper-container h3,
+    .wrapper-container .sex {
+        margin-left: 20px;
+    }
+
+    .link {
+        display: block;
+    }
+
+    .link .previous,
+    .link .next {
+        display: none;
+    }
+
+    .link h2 {
+        text-align: center;
+    }
+
+    .wrapper-container h3.redirect {
+        display: block;
+    }
+
+    .wrapper-container .first {
+        margin-top: 20px;
+    }
+
+    .wrapper-container .button .btn {
+        margin-bottom: 10px;
+    }
+}

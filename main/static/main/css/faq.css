@@ -1,0 +1,33 @@
+.content h2 {
+    margin-bottom: 50px;
+}
+
+.content .qa {
+    padding-bottom: 30px;
+}
+
+.content .qa p {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.content .qa p.last {
+    margin-bottom: 20px;
+}
+
+.content .qa .question {
+    color: #F70040;
+}
+
+@media (max-width: 1300px) {
+    .content .qa p.last {
+        margin-bottom: 110px;
+    }
+}
+
+@media (max-width: 550px) {
+    .content .qa p {
+        text-align: justify;
+    }
+}

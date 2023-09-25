@@ -1,0 +1,213 @@
+.content h2 {
+    margin-bottom: 25px;
+}
+
+.wrapper-container {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 550px;
+}
+
+.tabs {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 790px;
+    overflow: hidden;
+}
+
+.tabs .tab-header {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    
+}
+
+.tabs .tab-header .tab {
+    padding: 5px 15px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    outline: none;
+    color: #ffffff;
+}
+
+.tabs .tab-header .tab.active {
+    color: #F70040;
+}
+
+.tabs .tab-indicator {
+    position: relative;
+    height: 3px;
+    background: #F70040;
+    left: 0;
+}
+
+.tabs .tab-body {
+    position: relative;
+    padding-top: 10px;
+}
+
+.tabs .tab-body .tab-content {
+    display: none;
+}
+
+.tabs .tab-body .tab-content.active {
+    display: block;
+}
+
+.tabs .tab-body .tab-content h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #ffffff;
+}
+
+.tabs .tab-body .tab-content .service-name {
+    text-transform: uppercase;
+    color: #F70040;
+}
+
+.tabs .tab-body .tab-content .email-password {
+    margin-left: 50px;
+}
+
+.tabs .tab-body .tab-content p {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 20px;
+    vertical-align: middle;
+    color: #ffffff;
+}
+
+.tabs .tab-body .tab-content .save-btn {
+    text-align: center;
+}
+
+.tabs .tab-body .tab-content .save-btn .cta {
+    margin-top: 20px;
+}
+
+.tabs .tab-body .tab-content .cta {
+    display: inline-block;
+	padding: 5px 20px;
+    background-color: transparent;
+	border: 2px solid #F70040;
+    transition: 0.3s ease;
+    letter-spacing: 0.1rem;
+	transition-property: background-color, color;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+
+.tabs .tab-body .tab-content .cta:hover {
+    color: #ffffff;
+	background-color: #F70040;
+}
+
+.tabs .tab-body .tab-content .tab-grid {
+    display: grid;
+    grid-template-areas: 
+                        'logo service-name'
+                        'logo service-description'
+                        'logo service-button';
+    column-gap: 20px;
+}
+
+.tabs .tab-body .tab-content .tab-grid .logo {
+    grid-area: logo;
+    font-size: 80px;
+    display: flex;
+    justify-content: right;
+    color: #1DB954;
+}
+
+.tabs .tab-body .tab-content .tab-grid .service-name {
+    grid-area: service-name;
+}
+
+.tabs .tab-body .tab-content .tab-grid .service-description {
+    grid-area: service-description;
+    min-width: 500px;
+}
+
+.tabs .tab-body .tab-content .tab-grid .service-description span {
+    color: #F70040;
+}
+
+.tabs .tab-body .tab-content .tab-grid .service-btn {
+    grid-area: service-button;
+}
+
+.form {
+    position: relative;
+    align-items: center;
+    vertical-align: middle;
+    display: flex;
+    width: 500px;
+    height: 50px;
+    background: #ffffff;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.form .icon {
+    margin-left: 15px;
+    font-size: 20px;
+    color: #F70040;
+}
+
+.form .input-box input {
+    border:none;
+    display: block;
+    background: #ffffff;
+    margin-left: 10px;
+    width: 440px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.form .input-box input:focus {
+    outline: none;
+}
+
+@media (max-width: 900px) {
+    .tabs {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 700px) {
+    .wrapper-container {
+        width: 80vw;
+    }
+
+    .tabs .tab-header .tab {
+        text-align: center;
+        padding: 5px 10px;
+    }
+
+    .tab-body .form {
+        width: 75vw;
+    }
+
+    .tab-body .form .input-box input {
+        width: 60vw;
+    }
+
+    .tabs .tab-body .tab-content .email-password {
+        margin-left: 20px;
+    }
+    
+}

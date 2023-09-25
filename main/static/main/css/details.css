@@ -1,0 +1,205 @@
+.song-name {
+    text-transform: uppercase;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    color: #F70040;
+    margin-top: 5px;
+}
+
+.link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.link .bi {
+    font-size: 14px;
+    color: #F70040;
+}
+
+.link a {
+    font-size: 14px;
+    color: #F70040;
+    text-decoration: none;
+    margin-top: 30px;
+}
+
+.link .next p, 
+.link .next .bi {
+    visibility: hidden;
+}
+
+.btn {
+    text-align: center;
+    padding-right: auto;
+    padding-left: auto;
+}
+
+.btn .cta {
+    display: inline-block;
+	padding: 5px 20px;
+    background-color: transparent;
+    transition: 0.3s ease;
+    letter-spacing: 0.1rem;
+	transition-property: background-color, color;
+    border-radius: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+
+.btn .cta:hover {
+    color: #121212;
+}
+
+.btn .add-btn {
+    border: 2px solid #1DB954;
+    color: #1DB954;
+}
+
+.btn .add-btn:hover {
+    background-color: #1DB954;
+}
+
+.btn .remove-btn {
+    border: 2px solid #F70040;
+    color: #F70040;
+}
+
+.btn .remove-btn:hover {
+    background-color: #F70040;
+}
+
+.btn .bi {
+    text-align: center;
+}
+
+.tabs {
+    position: relative;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 790px;
+    overflow: hidden;
+}
+
+.tabs .tab-header {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    
+}
+
+.tabs .tab-header .tab {
+    padding: 5px 15px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    outline: none;
+    color: #ffffff;
+}
+
+.tabs .tab-header .tab.active {
+    color: #F70040;
+}
+
+.tabs .tab-indicator {
+    position: relative;
+    height: 3px;
+    background: #F70040;
+    left: 0;
+}
+
+.tabs .tab-body {
+    position: relative;
+    padding-top: 10px;
+}
+
+.tabs .tab-body .tab-content {
+    display: none;
+}
+
+.tabs .tab-body .tab-content.active {
+    display: block;
+}
+
+.song-cover {
+    text-align: center;
+}
+
+.song-img {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: 200px;
+    border-radius: 10px;
+}
+
+.tab-body .tab-content .lyric {
+    color: #ffffff;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.tab-body .tab-content .genre h2 {
+    text-transform: uppercase;
+}
+
+.tab-body .tab-content .genre .charts {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 500px;
+    /* text-align: center; */
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(201, 42, 42);
+}
+
+@media (max-width: 1300px) {
+    .tab-body .tab-content .lyric,
+    .tab-body .tab-content .genre .charts.last {
+        padding-bottom: 110px;
+    }
+}
+
+@media (max-width: 900px) {
+    .tabs {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .tab-body {
+        width: 80vw;
+    }
+    .tab-body .tab-content .genre .charts {
+        width: 80vw;
+    }
+    
+    .link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    
+    .tabs .tab-header .tab {
+        text-align: center;
+        padding: 5px 10px;
+    }
+
+    .link .previous,
+    .link .next{
+        display: none;
+    }
+
+    .link h2 {
+        text-align: center;
+    }
+}

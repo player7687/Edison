@@ -1,0 +1,150 @@
+{% extends 'main/_inside-base.html' %}
+{% load static %}
+
+{% block title %}
+{{song.artist}} - {{song.name}}
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'main/css/details.css' %}">
+{% endblock %}
+
+{% block active %}
+<li class="list active">
+    <b></b>
+    <b></b>
+    <a href="{% url 'history' %}">
+        <span class="icon"><i class="bi bi-clock-history"></i></span>
+    </a>
+</li>
+<li class="list">
+    <b></b>
+    <b></b>
+    <a href="{% url 'settings' %}">
+        <span class="icon"><i class="bi bi-gear"></i></span>
+    </a>
+</li>
+<li class="list">
+    <b></b>
+    <b></b>
+    <a href="{% url 'faq' %}">
+        <span class="icon"><i class="bi bi-question-lg"></i></span>
+    </a>
+</li>
+{% endblock %}
+
+{% block mobile-active %}
+<li class="list active">
+    <a href="{% url 'history' %}">
+        <div class="indicator"></div>
+        <span class="icon"><i class="bi bi-clock-history"></i></span>
+    </a>
+</li>
+<li class="list">
+    <a href="{% url 'settings' %}">
+        <div class="indicator"></div>
+        <span class="icon"><i class="bi bi-gear"></i></span>
+    </a>
+</li>
+<li class="non-list">
+    <a href="#">
+        <button class="icon" id="open-modal-mob"><i class="bi bi-upload"></i></button>
+        <p class="text">{{ request.user }}</p>
+    </a>
+</li>
+<li class="list">
+    <a href="{% url 'faq' %}">
+        <div class="indicator"></div>
+        <span class="icon"><i class="bi bi-question-lg"></i></span>
+    </a>
+</li>
+<li class="list">
+    <a href="{% url 'logout' %}">
+        <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+    </a>
+</li>
+{% endblock %}
+
+{% block heading %}
+<div class="link">
+    <span class="previous">
+        <i class="bi bi-chevron-left"></i>
+        <a href="{% url 'history' %}"> HISTORY</a>
+    </span>
+    <h2>{{song.artist}}</h2>
+    <span class="next">
+        <p href="#">HISTORY <i class="bi bi-chevron-right"></i></p>
+    </span>
+</div>
+{% endblock %}
+
+{% block main-content %}
+<h1 class="song-name">{{song.name}}</h1>
+<p class="song-cover">
+    <img src="{{song.cover.url}}" class="song-img">
+</p>
+{% if is_authenticated %}
+    <form action="#" method="post">{% csrf_token %}
+        <div class="btn">
+            {% if is_saved %}
+                <button type="submit" id="song-remove" class="remove-btn cta" value="{{song.song_uri}}" name="song_remove" ><i class="bi bi-spotify"></i> Remove</button>  
+            {% else %}
+                <button type="submit" id="song-add" class="add-btn cta" value="{{song.song_uri}}" name="song_add" ><i class="bi bi-spotify"></i> Add</button>
+            {% endif %}
+        </div>
+    </form>
+{% endif %}
+
+<div class="tabs">
+    <div class="tab-header">
+        <div class="tab active"><i class="bi bi-text-paragraph"></i> LYRIC</div>
+        <div class="tab"><i class="bi bi-bar-chart-line-fill"></i> GENRE</div>
+        <div class="tab"><i class="bi bi-spotify"></i> RECOMMENDATION</div>
+    </div>
+    <div class="tab-indicator"></div>
+    <div class="tab-body">
+        <div class="tab-content active">
+            <div class="lyric">
+                <p>{{ lyrics|linebreaksbr }}</p>
+            </div>
+        </div>
+        <div class="tab-content">
+            <h2>Song's Genres</h2>
+            <div class="genre">
+                <p>
+                    <div class="charts">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </p>
+            </div>
+            <h2>Song's Features</h2>
+            <div class="genre">
+                <p>
+                    <div class="charts last">
+                        <canvas id="myChart2"></canvas>
+                    </div>
+                </p>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="recommendation">
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    let genres = JSON.parse('{{ genres|escapejs }}')
+    let probability = JSON.parse('{{ probability|escapejs }}')
+    let features = [+'{{ song.danceability|escapejs }}', +'{{ song.energy|escapejs }}', +'{{ song.speechiness|escapejs }}', +'{{ song.acousticness|escapejs }}', +'{{ song.instrumentalness|escapejs }}', +'{{ song.valence|escapejs }}']
+    console.log(genres)
+    console.log(probability)
+    console.log(features)
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'main/js/tabs.js' %}"></script>
+<script src="{% static 'main/js/charts.js' %}"></script>
+{% endblock %}

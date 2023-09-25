@@ -1,0 +1,139 @@
+{% extends 'main/_inside-base.html' %}
+{% load static %}
+{% load custom_filter %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'main/css/history.css' %}">
+{% endblock %}
+
+{% block active %}
+<li class="list active">
+    <b></b>
+    <b></b>
+    <a href="{% url 'history' %}">
+        <span class="icon"><i class="bi bi-clock-history"></i></span>
+    </a>
+</li>
+<li class="list">
+    <b></b>
+    <b></b>
+    <a href="{% url 'settings' %}">
+        <span class="icon"><i class="bi bi-gear"></i></span>
+    </a>
+</li>
+<li class="list">
+    <b></b>
+    <b></b>
+    <a href="{% url 'faq' %}">
+        <span class="icon"><i class="bi bi-question-lg"></i></span>
+    </a>
+</li>
+{% endblock %}
+
+{% block mobile-active %}
+<li class="list active">
+    <a href="{% url 'history' %}">
+        <div class="indicator"></div>
+        <span class="icon"><i class="bi bi-clock-history"></i></span>
+    </a>
+</li>
+<li class="list">
+    <a href="{% url 'settings' %}">
+        <div class="indicator"></div>
+        <span class="icon"><i class="bi bi-gear"></i></span>
+    </a>
+</li>
+<li class="non-list">
+    <a href="#">
+        <button class="icon" id="open-modal-mob"><i class="bi bi-upload"></i></button>
+        <p class="text">{{ request.user }}</p>
+    </a>
+</li>
+<li class="list">
+    <a href="{% url 'faq' %}">
+        <div class="indicator"></div>
+        <span class="icon"><i class="bi bi-question-lg"></i></span>
+    </a>
+</li>
+<li class="list">
+    <a href="{% url 'logout' %}">
+        <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+    </a>
+</li>
+{% endblock %}
+
+{% block heading %}
+<h2>HISTORY</h2>
+{% endblock %}
+
+{% block main-content %}
+<div class="search">
+    <span class="search-icon"><i class="bi bi-search"></i></span>
+    <div class="search-input">
+        <input type="text" placeholder="Search..." id="search-string" onkeyup="searchFunc()">
+    </div>
+</div>
+<marquee></marquee>
+<table class="upload-history" id="search-upload-history">
+    <thead>
+        <tr>
+            <th class="number">#</th>
+            <th class="name">NAME</th>
+            <th class="album">ALBUM</th>
+            <th class="genre">GENRE</th>
+            <th class="modality">MODALITY</th>
+            <th class="bpm">BPM</th>
+            <th class="status">STATUS</th>
+            <th class="duration">DURATION</th>
+            <th class="details"></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for x in song_data %}
+        <tr>
+            <td class="number">{{x.order}}</td>
+            <td class="name" data-title="{{x.song.artist}}: {{x.song.name}}">
+                <p class="song">{{x.song.name}}</p>
+                <p class="artist">{{x.song.artist}}</p>
+            </td>
+            <td class="album" data-title="{{x.song.album}}">{{x.song.album}}</td>
+            <td class="genre">
+                {% for genre in genres_data|get_item:x.song.id %}
+                    {{genre}}; 
+                {% endfor %}
+            </td>
+            <td class="modality">
+                {% if x.song.mode == 0 %}
+                    Minor
+                {% elif x.song.mode == 1 %}
+                    Major
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+            <td class="bpm">{{x.song.tempo}}</td>
+            {% if x.song.status %}
+                <td class="status"><i class="bi bi-check-circle"></i></td>
+            {% else %}
+                <td class="status"><i class="bi bi-x-circle"></i></td>
+            {% endif %}
+            <td class="duration">{{duration|get_item:x.song.id}}</td>
+            {% if x.song.status %}
+                <td class="details"><a href="./{{x.song.id}}" class="details-btn">Details</a></td>
+            {% else %}
+                <td class="details"><a class="details-btn" style="visibility:hidden">Details</a></td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'main/js/search.js' %}"></script>
+{% endblock %}

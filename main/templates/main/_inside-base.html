@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="{% static 'main/img/icon_crimson.ico' %}" type="images/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'main/css/_inside-style.css' %}">
+    {% block style %}{% endblock %}
+</head>
+<body>
+    <div class="navigation">
+        <div class="header">
+            <div class="logo">
+                <img src="{% static 'main/img/logo_white.png' %}" alt="">
+            </div>
+        </div>
+        <ul class="target-button">
+            {% block active %}{% endblock %}
+        </ul>
+        <ul class="functional-button">
+            <li>
+                <a href="#">
+                    <button class="icon" id="open-modal"><i class="bi bi-upload"></i></button>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'logout' %}">
+                    <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+                </a>
+
+                <p class="username" data-username="{{request.user}}">{{ request.user }}</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mob-navigation">
+        <ul>
+            {% block mobile-active %}{% endblock %}
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="wrapper">
+            {% block heading %}{% endblock %}
+            <div class="main-content">
+                {% block main-content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-container" id="modal-container">
+        <div class="modal">
+            <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                <h2>UPLOAD</h2>
+                <div class="grid-container">
+                    <div class="url">
+                        <span class="icon url-icon"><i class="bi bi-link"></i></span>
+                        <div class="input-box">
+                            <input type="text" placeholder="" id="input-link" class="input-link" name="input-link">
+                        </div>
+                    </div>
+                    <p class="or">OR</p>
+                    <div class="drag-and-drop-area">
+                        <div class="drag-n-drop">
+                            <img src="{% static 'main/img/logo_crimson.png' %}" alt="">
+                            <p>Drag & Drop .mp3 files here</p>
+                            <input type="file" name="song" id="input-file" accept="audio/*" multiple>
+                        </div>
+                        <!-- <p class="upload-list">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit architecto minima fuga magnam beatae omnis ducimus sapiente nesciunt cum id.</p> -->
+                    </div>
+                    <div class="upload-list">
+                        <!-- <div class="upload-list-file" attribut=${uploadFiles.indexOf(files[key])}><i class="bi bi-file-earmark-music"></i><span>${files[key].name}</span><i name="del" class="bi bi-x" attribut=${uploadFiles.indexOf(files[key])}></i></div> -->
+                    </div>
+                    <div class="modal-btn">
+                        <input type='submit' id="save-modal" class="save-button button" value="Confirm" name = "upload_song">
+                        <button type="button" id="cancel-modal" class="cancel-button button">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'main/js/test.js' %}"></script>
+    {% block js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,126 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edison</title>
+    <link rel="shortcut icon" href="{% static 'main/img/icon_crimson.ico' %}" type="images/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'main/css/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <section id="header">
+        <div class="header container">
+            <div class="navigation">
+                <div class="logo">
+                    <img src="{% static 'main/img/logo_crimson.png' %}" alt="">
+                </div>
+                <div class="nav-list">
+                    <div class="hamburger">
+                        <div class="bar">
+
+                        </div>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="#home" data-after="Home">HOME</a>
+                        </li>
+                        <li>
+                            <a href="#how-it-work" data-after="How It Work">HOW IT WORK</a>
+                        </li>
+                        <li>
+                            <a href = "{% url 'login' %}" type="button" class="cta" data-after="Sign In">SIGN IN</a>
+                        </li>
+                        <!-- <li>
+                            <a href="#about-us" data-after="About-Us">ABOUT US</a>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="home">
+        <div class="home container">
+            <div>
+                <h1>Hello! Welcome to</h1>
+                <div class="home-logo"></div>
+                <img src="{% static 'main/img/name_crimson.png' %}" alt="">
+                <p>Automatically retrieve information of a musical work and recommend suitable songs to users from your web browser. Our artificial intelligence listens to thousands of songs and extracts them in minutes, so you can be given the right music content.</p>
+                <div class="button">
+                    <a href="{% url 'register' %}" type="button" class="cta">TRY IT</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-work">
+        <div class="how-it-work container">
+            <h1 class="title">HOW IT WORK</h1>
+            <div class="step">
+                <div class="step-item">
+                    <div class="step-description">
+                        <h2>UPLOAD YOUR MUSIC</h2>
+                        <p>Upload your songs to our service via drag and drop or via URL, wait for the service to analyze the musical work. The process takes from 15 seconds to a minute. Be patient while our system processes your favorite songs</p>
+                    </div>
+                    <div class="step-img">
+                        <img src="{% static 'main/img/step-1.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-description">
+                        <h2>SELECT UPLOADED MUSIC</h2>
+                        <p>After the song has been uploaded, our system will show the parameters of the song (eg song title, song's album, music genre, length, BPM, ...) and other parameters. Other technical parameters are also analyzed by the service (Spectograms, MFCCs, ...). You can choose to see the lyrics or listen to the song.</p>
+                    </div>
+                    <div class="step-img">
+                        <img src="{% static 'main/img/step-2.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-description">
+                        <h2>CHECK YOUR RECOMMENDATION</h2>
+                        <p>The highlight of our system is to provide you recommendations about songs that are similar to the ones you upload. Using the parameters analyzed and our optimized algorithms, the system can give you the closest suggestion of songs, which can save you tons of time in finding new interesting music.</p>
+                    </div>
+                    <div class="step-img">
+                        <img src="{% static 'main/img/step-3.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="top_header">
+            <section>
+                <span><i class="fa fa-map-marker"></i></span>
+                <span>Tallinskaya Ulitsa, 34, Moscow, 123592</span>
+            </section>
+            <section>
+                <span><i class="fa fa-phone"></i></span>
+                <span>8 (800) 555 3535</span>
+            </section>
+            <section>
+                <span><i class="fa fa-envelope"></i></span>
+                <span>info@edison.com</span>
+            </section>
+        </div>
+        <span class="border-shape"></span>
+        <div class="bottom_content">
+            <section>
+                <a href="#" class="social"><i class="fa fa-vk"></i></a>
+                <a href="#" class="social"><i class="fa fa-telegram"></i></a>
+            </section>
+        </div>
+
+        <div class="copyright">
+            Copyright © 2022 Edison - All rights reserved 
+        </div>
+    </footer>
+
+    <script src="{% static 'main/js/home.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="shortcut icon" href="{% static 'main/img/icon_crimson.ico' %}" type="images/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'main/css/sign.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="link">
+            <span class="previous">
+                <i class="bi bi-chevron-left"></i>
+                <a href="{% url 'home' %}"> HOME</a>
+            </span>
+            <h2>AUTHENTICATION</h2>
+            <span class="next">
+                <a href="{% url 'register' %}">SIGN UP </a>
+                <i class="bi bi-chevron-right"></i>
+            </span>
+        </div>
+        <div class="wrapper-container">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <h3 class="label first">Login</h3>
+                <div class="form">
+                    <span class="icon user-icon"><i class="bi bi-person-circle"></i></span>
+                    <div class="input-box">
+                        <input type="text" name="username">
+                    </div>
+                </div>
+                <h3 class="label">Password</h3>
+                <div class="form">
+                    <span class="icon password-icon"><i class="bi bi-key"></i></span>
+                    <div class="input-box">
+                        <input type="password" name="password">
+                    </div>
+                </div>
+                <h3 class="redirect">Don't have an account yet? <a href="{% url 'register' %}">Sign Up</a></h3>
+                <div class="button">
+                    <input type="submit" class="btn" name ="Create User" value="SIGN IN">
+                </div> 
+            </form>
+        </div>
+    </div>
+</body>
+</html>

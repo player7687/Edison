@@ -1,0 +1,157 @@
+{% extends 'main/_inside-base.html' %}
+{% load static %}
+
+{% block title %}
+Settings
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'main/css/settings.css' %}">
+{% endblock %}
+
+{% block active %}
+<li class="list">
+    <b></b>
+    <b></b>
+    <a href="{% url 'history' %}">
+        <span class="icon"><i class="bi bi-clock-history"></i></span>
+    </a>
+</li>
+<li class="list active">
+    <b></b>
+    <b></b>
+    <a href="{% url 'settings' %}">
+        <span class="icon"><i class="bi bi-gear"></i></span>
+    </a>
+</li>
+<li class="list">
+    <b></b>
+    <b></b>
+    <a href="{% url 'faq' %}">
+        <span class="icon"><i class="bi bi-question-lg"></i></span>
+    </a>
+</li>
+{% endblock %}
+
+{% block mobile-active %}
+<li class="list">
+    <a href="{% url 'history' %}">
+        <div class="indicator"></div>
+        <span class="icon"><i class="bi bi-clock-history"></i></span>
+    </a>
+</li>
+<li class="list active">
+    <a href="{% url 'settings' %}">
+        <div class="indicator"></div>
+        <span class="icon"><i class="bi bi-gear"></i></span>
+    </a>
+</li>
+<li class="non-list">
+    <a href="#">
+        <button class="icon" id="open-modal-mob"><i class="bi bi-upload"></i></button>
+        <p class="text">{{ request.user }}</p>
+    </a>
+</li>
+<li class="list">
+    <a href="{% url 'faq' %}">
+        <div class="indicator"></div>
+        <span class="icon"><i class="bi bi-question-lg"></i></span>
+    </a>
+</li>
+<li class="list">
+    <a href="{% url 'logout' %}">
+        <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+    </a>
+</li>
+{% endblock %}
+
+{% block heading %}
+<h2>SETTINGS</h2>
+{% endblock %}
+
+{% block main-content %}
+<div class="tabs">
+    <div class="tab-header">
+        <div class="tab active"><i class="bi bi-arrow-repeat"></i> EMAIL</div>
+        <div class="tab"><i class="bi bi-arrow-repeat"></i> PASSWORD</div>
+        <div class="tab"><i class="bi bi-link-45deg"></i> CONNECT</div>
+    </div>
+    <div class="tab-indicator"></div>
+    <div class="tab-body">
+        <div class="tab-content active">
+            <div class="wrapper-container">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <h3 class="email-password">New email</h3>
+                    <div class="form">
+                        <span class="icon email-icon"><i class="bi bi-envelope"></i></span>
+                        <div class="input-box">
+                            <input type="email" placeholder="" id="email-string" name="new_email">
+                        </div>
+                    </div>
+                    <div class="save-btn">
+                        <input type="submit" class="cta" name ="change_email" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="wrapper-container">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <h3 class="email-password">Current password</h3>
+                    <div class="form">
+                        <span class="icon password-icon"><i class="bi bi-key"></i></span>
+                        <div class="input-box">
+                            {{form.old_password}}
+                        </div>
+                    </div>
+                    <h3 class="email-password">New password</h3>
+                    <div class="form">
+                        <span class="icon password-icon"><i class="bi bi-key"></i></span>
+                        <div class="input-box">
+                            {{form.new_password1}}
+                        </div>
+                    </div>
+                    <h3 class="email-password">Repeat new password</h3>
+                    <div class="form">
+                        <span class="icon password-icon"><i class="bi bi-key"></i></span>
+                        <div class="input-box">
+                            {{form.new_password2}}
+                        </div>
+                    </div>
+                    <div class="save-btn">
+                        <input type="submit" class="cta" name ="change_password" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="wrapper-container">
+                <div class="tab-grid">
+                    <span class="logo"><i class="bi bi-spotify"></i></span>
+                    <h3 class="service-name">Spotify</h3>
+                    {% if not is_authenticated %}
+                        <p class="service-description">Connect with Spotify to be able to open recommendations in Spotify</p>
+                        <div class="service-btn">
+                            <button class="cta" onclick="authSpotify()">Connect</button>
+                        </div>
+                    {% else %}
+                        <p class="service-description">Username: <span> {{ dis_name }}</span></p>
+                        <form action="#" method="get">
+                            <div class="service-btn">
+                                <input type="submit" class="cta" value ="Log Out" name="spotify_log_out">
+                            </div>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'main/js/tabs.js' %}"></script>
+<script src="{% static 'main/js/spotify.js' %}"></script>
+{% endblock %}
